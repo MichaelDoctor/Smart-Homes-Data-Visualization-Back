@@ -1,8 +1,10 @@
 import { config } from 'dotenv';
 import { Sequelize } from 'sequelize';
 
+// Get env variables
 config();
 
+// Get Postgres related envs
 const {
   PG_HOST, PG_PORT, PG_DB, PG_USER, PG_PASSWORD, SSL_MODE,
 } = process.env;
@@ -35,14 +37,14 @@ export const sequelize = new Sequelize(
 const connectDB = async (): Promise<void> => {
   if (checkEnvsExists()) {
     try {
+      // Check if connection can be made
       await sequelize.authenticate();
-      console.log('Connection has been established successfully.');
     } catch {
-      console.error('Unable to connect to the database');
+      throw new Error('Unable to connect to the database.');
     }
-  } else {
-    console.log('Unable to connect to db. Env variables required.');
+    return;
   }
+  throw new Error('Unable to connect to db. Env variables required.');
 };
 
 export default connectDB;
