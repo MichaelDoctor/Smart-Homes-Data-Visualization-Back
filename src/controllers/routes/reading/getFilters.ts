@@ -1,6 +1,6 @@
 import { Op, WhereOptions } from 'sequelize';
 import { ParsedQs } from 'qs';
-import { Filters } from '../../utils/getUniques';
+import { Filters } from '../../utils/getUniqueResponse';
 
 // Where Options
 interface DateTimeOptions {

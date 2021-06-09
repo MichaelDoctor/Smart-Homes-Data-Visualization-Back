@@ -16,6 +16,7 @@ const checkEnvsExists = (): boolean => {
   return true;
 };
 
+// Instantiate new sequelize
 export const sequelize = new Sequelize(
   String(PG_DB),
   String(PG_USER),
@@ -34,10 +35,10 @@ export const sequelize = new Sequelize(
   },
 );
 
+// Check if connection to db can be made
 const connectDB = async (): Promise<void> => {
   if (checkEnvsExists()) {
     try {
-      // Check if connection can be made
       await sequelize.authenticate();
     } catch {
       throw new Error('Unable to connect to the database.');

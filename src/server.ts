@@ -25,6 +25,7 @@ const checkDB = async (): Promise<void> => {
     console.log(err);
   }
 };
+
 checkDB();
 
 export default app;

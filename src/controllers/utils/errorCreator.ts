@@ -1,5 +1,6 @@
 import { Response } from 'express';
 
+// creates an error response
 const errorCreator = (
   statusCode: number,
   message: string,
