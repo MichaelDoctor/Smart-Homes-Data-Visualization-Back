@@ -1,0 +1,34 @@
+{
+  "name": "smart-homes-dv-backend",
+  "version": "1.0.0",
+  "description": "Express REST server",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon",
+    "compile": "rimraf ./build && tsc",
+    "build": "npm run compile && node ./build/index.js"
+  },
+  "author": "Michael Doctor",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "pg": "^8.6.0",
+    "sequelize": "^6.6.2"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.12",
+    "@types/node": "^15.12.2",
+    "@types/validator": "^13.1.3",
+    "@typescript-eslint/eslint-plugin": "^4.26.1",
+    "@typescript-eslint/parser": "^4.26.1",
+    "eslint": "^7.28.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-import-resolver-typescript": "^2.4.0",
+    "eslint-plugin-import": "^2.23.4",
+    "nodemon": "^2.0.7",
+    "rimraf": "^3.0.2",
+    "ts-node": "^10.0.0",
+    "typescript": "^4.3.2"
+  }
+}
