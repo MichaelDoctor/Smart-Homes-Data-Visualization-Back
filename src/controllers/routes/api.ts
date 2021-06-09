@@ -1,7 +1,9 @@
 import { Router } from 'express';
 
 // Sub domains
-import defaultRoute from './readings/readings';
+import defaultRoute from './reading/readingRoute';
+import idRoute from './id/idRoute';
+import serialRoute from './serial/serialRoute';
 
 const router = Router();
 
@@ -12,5 +14,19 @@ const router = Router();
 @access   public
 */
 router.get('/reading', defaultRoute);
+
+/*
+@route    GET /api/serial
+@desc     Get all unique sn
+@access   public
+*/
+router.get('/serial', serialRoute);
+
+/*
+@route    GET /api/id
+@desc     Get all unique ids
+@access   public
+*/
+router.get('/id', idRoute);
 
 export default router;

@@ -3,7 +3,7 @@ import { Sequelize, Op, WhereOptions } from 'sequelize';
 import moment from 'moment';
 import Reading from '../../../models/Reading';
 import errorCreator from '../../utils/errorCreator';
-import { getSingle, getBoth } from '../../utils/getFilters';
+import { getSingle, getBoth, Options } from './getFilters';
 
 /*
 @route    GET /api/reading
@@ -12,12 +12,10 @@ import { getSingle, getBoth } from '../../utils/getFilters';
 @access   public
 */
 const defaultRoute = async (req: Request, res: Response): Promise<Response> => {
-  let results;
-
   const { day, sn, id } = req.query;
 
+  // Get specific date
   let date: string | null = null;
-
   if (day) {
     const format = 'YYYY-MM-DD';
     if (!moment(String(day), format, true).isValid()) {
@@ -25,7 +23,6 @@ const defaultRoute = async (req: Request, res: Response): Promise<Response> => {
     }
     date = String(day);
   }
-
   // Earliest date entry =  default (no query). All Day
   const startDate = moment(`${date || '2019-04-29'}T00:00:00.000Z`)
     .subtract(6, 'h');
@@ -33,7 +30,7 @@ const defaultRoute = async (req: Request, res: Response): Promise<Response> => {
     .subtract(6, 'h');
 
   // Change filter
-  let whereOptions: WhereOptions<any> = {
+  let whereOptions: WhereOptions<Options> = {
     DateTime: {
       [Op.gte]: startDate,
       [Op.lte]: endDate,
@@ -51,6 +48,8 @@ const defaultRoute = async (req: Request, res: Response): Promise<Response> => {
     whereOptions = getSingle(id, whereOptions, 'Device_ID');
   }
 
+  // Get readings
+  let results;
   try {
     results = await Reading.findAll({
       attributes: [
