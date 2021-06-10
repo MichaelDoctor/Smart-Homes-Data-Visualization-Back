@@ -10,13 +10,22 @@ CD into project:
 Install dependencies:
 ### `npm i`
 
+CD into react project (from backend):
+### `cd src/views/smart-homes-dv-frontend/`
+
+Install dependencies:
+### `npm i`
+
+Build the Project:
+### `npm build`
+
 Create and populate the .env file. 
 Start Dev Server:
 ### `npm start`
 
 
 ## Frontend - React MaterialUI
-CD into react project():
+CD into react project (from backend):
 ### `cd src/views/smart-homes-dv-frontend/`
 
 Install dependencies:
