@@ -16,8 +16,11 @@ Start Dev Server:
 
 
 ## Frontend - React MaterialUI
-CD into react project (from backend):
-### `cd src/views/smart-homes-dv-frontend/`
+Clone Project:
+### `git clone https://github.com/MichaelDoctor/Smart-Homes-Data-Visualization-Front.git`
+
+CD into react project:
+### `cd Smart-Homes-Data-Visualization-Front/`
 
 Install dependencies:
 ### `npm i`
