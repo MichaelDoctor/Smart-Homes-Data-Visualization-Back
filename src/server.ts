@@ -19,16 +19,14 @@ const checkDB = async (): Promise<void> => {
     // Give React access to node
     app.use(crossOrigin);
     // Access React Frontend
-    app.use(express.static(`${__dirname}/frontend/build`));
+    app.use(express.static(`${__dirname}/views/smart-homes-dv-frontend/build`));
 
     // Api endpoints
     app.use('/api', apiRouter);
 
-    app.get('*',
-      (
-        req: Request,
-        res: Response,
-      ) => res.sendFile(`${__dirname}/frontend/build/index.html`));
+    app.get('*', (req: Request, res: Response) => res.sendFile(
+      `${__dirname}/views/smart-homes-dv-frontend/build/index.html`,
+    ));
 
     app.listen(PORT, (): void => {
       console.log(`Server Running on port ${PORT}`);
