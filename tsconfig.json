@@ -16,11 +16,11 @@
     "resolveJsonModule": true,
     "moduleResolution": "node",
     "forceConsistentCasingInFileNames": true,
-    "include": [
-      "src/**/*.ts" 
-    ],
-    "exclude": [
-      "node_modules"
-    ]
-  }
+  },
+  "include": [
+    "**/*"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

@@ -1,5 +1,6 @@
 import express, { Request, Response } from 'express';
 import { config } from 'dotenv';
+import path from 'path';
 import apiRouter from './controllers/routes/api';
 import connectDB from './config/dbConfig';
 import crossOrigin from './middleware/crossOrigin';
@@ -19,14 +20,15 @@ const checkDB = async (): Promise<void> => {
     // Give React access to node
     app.use(crossOrigin);
     // Access React Frontend
-    app.use(express.static(`${__dirname}/views/smart-homes-dv-frontend/build`));
+    app.use(express.static(path.join(__dirname, 'views/build')));
 
     // Api endpoints
     app.use('/api', apiRouter);
 
-    app.get('*', (req: Request, res: Response) => res.sendFile(
-      `${__dirname}/views/smart-homes-dv-frontend/build/index.html`,
-    ));
+    // Handles any requests that don't match the ones above
+    app.get('*', (req: Request, res: Response) => {
+      res.sendFile(path.join(`${__dirname}/views/build/index.html`));
+    });
 
     app.listen(PORT, (): void => {
       console.log(`Server Running on port ${PORT}`);
